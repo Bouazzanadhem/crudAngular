@@ -1,0 +1,19 @@
+<div class="container row">
+    <div class="offset-3 col-6">
+      <h1>Update List </h1>
+      <form [formGroup]="updatelistForm">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" class="form-control" formControlName="Name" placeholder="List name">
+        </div>
+        <div class="form-group">
+          <label>Discription</label>
+          <textarea class="form-control" formControlName="Discription" placeholder="Discription"></textarea>
+        </div>
+        <div class="row">
+          <button class=" btn btn-primary col-4" style="margin: 10px auto;">Save</button>
+          <button class=" btn btn-dark col-4" style="margin: 10px auto;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
