@@ -1,0 +1,47 @@
+<!-- <div class="container row">
+    <div class="offset-3 col-6">
+      <h1>List To Do</h1>
+      <form [formGroup]="listtodoForm">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" class="form-control" formControlName="Name" placeholder="List name">
+        </div>
+        <div class="form-group">
+          <label>Discription</label>
+          <textarea class="form-control" formControlName="Discription" placeholder="Discription"></textarea>
+        </div>
+        <button class="form-control btn btn-primary">Log in</button>
+      </form>
+    </div>
+  </div> -->
+<div style="width: 1000px; margin: auto;">
+  <h1 style="text-align: center;">List To Do</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">List Name</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{list.Name}}</td>
+        <td>{{list.Discription}}</td>
+        <td>
+          <button type="submit" class="btn btn-success" (click)="updateProduct()">
+          Update
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteProduct()">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
