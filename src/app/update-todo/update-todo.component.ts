@@ -20,7 +20,7 @@ export class UpdateTodoComponent implements OnInit {
   ngOnInit(): void {
     this.todoId= this.route.snapshot.params['id']
     this.lists = JSON.parse(localStorage.getItem("lists") || '[]');
-    let todo= this.lists.find(x=>x.id == this.todoId)
+    let todo = this.lists.find(x=>x.id == this.todoId)
     this.updatelistForm=new FormGroup({
     id: new FormControl(''),
     Name: new FormControl('',[Validators.required]),

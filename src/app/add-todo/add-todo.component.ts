@@ -39,7 +39,7 @@ export class AddTodoComponent implements OnInit {
     this.route.navigate(['list-todo'])
     this.snackbar.open("added", "close", {
       duration: 2000,
-     
+
     });
     
   }

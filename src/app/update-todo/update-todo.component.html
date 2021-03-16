@@ -5,7 +5,7 @@
         <div class="form-group">
           <label for="">Name</label>
           <input type="text" class="form-control" formControlName="Name"
-          [ngClass]="{ 'is-invalid': submitted && updatelistForm.controls.Name.hasError }">
+          [ngClass]="{ 'is-invalid': submitted && updatelistForm.controls.Name.errors,'is-valid': submitted && !updatelistForm.controls.Name.errors }">
         </div>
         <mat-error *ngIf="submitted && updatelistForm.controls.Name.hasError('required')">
           Name is required
@@ -14,7 +14,7 @@
           <label>Discription
           </label>
           <textarea class="form-control" formControlName="Discription"
-          [ngClass]="{ 'is-invalid': submitted && updatelistForm.controls.Discription.hasError }"></textarea>
+          [ngClass]="{ 'is-invalid': submitted && updatelistForm.controls.Discription.errors, 'is-valid': submitted && !updatelistForm.controls.Discription.errors }"></textarea>
         </div>
         <mat-error *ngIf="submitted && updatelistForm.controls.Discription.hasError('required')">
           Discription is required
