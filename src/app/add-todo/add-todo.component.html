@@ -4,19 +4,21 @@
       <form [formGroup]="addlistForm" (ngSubmit)="addlist()">
         <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" formControlName="Name" placeholder="List name">
+          <input type="text" class="form-control" formControlName="Name" placeholder=" name"
+          [ngClass]="{ 'is-invalid': submitted && addlistForm.controls.Name.hasError }">
         </div>
         <mat-error *ngIf="submitted && addlistForm.controls.Name.hasError('required')">
             Name is required
         </mat-error>
         <div class="form-group">
           <label>Discription</label>
-          <textarea class="form-control" formControlName="Discription" placeholder="Discription"></textarea>
+          <textarea class="form-control" formControlName="Discription" placeholder="Discription"
+          [ngClass]="{ 'is-invalid': submitted && addlistForm.controls.Discription.hasError }"></textarea>
         </div>
         <mat-error *ngIf="submitted && addlistForm.controls.Discription.hasError('required')">
             Discription is required
         </mat-error>
-        <button class="form-control btn btn-primary" type="submit" >Add </button>
+        <button class="form-control btn btn-primary" style="margin: 10px auto;" type="submit" >Add </button>
       </form>
     </div>
   </div>

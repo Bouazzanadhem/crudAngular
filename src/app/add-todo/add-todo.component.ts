@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-todo',
@@ -9,14 +11,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddTodoComponent implements OnInit {
   submitted= false;
   addlistForm: FormGroup = new FormGroup({
-    // ID: new FormControl('',Math.floor(Math.random()*100)),
     Name: new FormControl('',[Validators.required]),
     Discription: new FormControl('',[Validators.required])
   })
 
-  constructor() { }
-
+  constructor(public route: Router,private snackbar:MatSnackBar) { }
+    id:any
   ngOnInit(): void {
+    this.id = Math.floor(Math.random()*100);
+    // console.log(this.id);
+    // console.log(this.addlistForm.value.Name);
+    
     // this.id = this.route.snapshot.params['id'];
     //     this.isAddMode = !this.id;
     
@@ -26,10 +31,16 @@ export class AddTodoComponent implements OnInit {
     if(this.addlistForm.invalid){
       return;
     }
-    console.log(this.addlistForm.value);
-    let list = JSON.parse(localStorage.getItem("list") || '[]');
-    list.push(this.addlistForm.value);
-    localStorage.setItem("list",JSON.stringify(list));
+    // console.log(this.addlistForm.value.Name);
+    let list={id:this.id,Name:this.addlistForm.value.Name,Discription:this.addlistForm.value.Discription}
+    let lists = JSON.parse(localStorage.getItem("lists") || '[]');
+    lists.push(list);
+    localStorage.setItem("lists",JSON.stringify(lists));
+    this.route.navigate(['list-todo'])
+    this.snackbar.open("added", "close", {
+      duration: 2000,
+     
+    });
     
   }
 }

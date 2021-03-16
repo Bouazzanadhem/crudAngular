@@ -11,6 +11,7 @@ import { UpdateTodoComponent } from './update-todo/update-todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { Page404Component } from './page404/page404.component';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { Page404Component } from './page404/page404.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

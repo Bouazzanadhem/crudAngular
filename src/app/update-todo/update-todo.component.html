@@ -4,15 +4,24 @@
       <form [formGroup]="updatelistForm">
         <div class="form-group">
           <label for="">Name</label>
-          <input type="text" class="form-control" formControlName="Name" placeholder="List name">
+          <input type="text" class="form-control" formControlName="Name"
+          [ngClass]="{ 'is-invalid': submitted && updatelistForm.controls.Name.hasError }">
         </div>
+        <mat-error *ngIf="submitted && updatelistForm.controls.Name.hasError('required')">
+          Name is required
+        </mat-error>
         <div class="form-group">
-          <label>Discription</label>
-          <textarea class="form-control" formControlName="Discription" placeholder="Discription"></textarea>
+          <label>Discription
+          </label>
+          <textarea class="form-control" formControlName="Discription"
+          [ngClass]="{ 'is-invalid': submitted && updatelistForm.controls.Discription.hasError }"></textarea>
         </div>
+        <mat-error *ngIf="submitted && updatelistForm.controls.Discription.hasError('required')">
+          Discription is required
+        </mat-error>
         <div class="row">
-          <button class=" btn btn-primary col-4" style="margin: 10px auto;">Save</button>
-          <button class=" btn btn-dark col-4" style="margin: 10px auto;">Cancel</button>
+          <button class=" btn btn-primary col-4" style="margin: 10px auto;" (click)="updatelist()">Save</button>
+          <button class=" btn btn-dark col-4" style="margin: 10px auto;" routerLink="/list-todo">Cancel</button>
         </div>
       </form>
     </div>
