@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { Page404Component } from './page404/page404.component';
+import { AddproduitComponent } from './addproduit/addproduit.component';
+import { ListproduitComponent } from './listproduit/listproduit.component';
+import { UpdateproduitComponent } from './updateproduit/updateproduit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { Page404Component } from './page404/page404.component';
     AddTodoComponent,
     ListTodoComponent,
     UpdateTodoComponent,
-    Page404Component
+    Page404Component,
+    AddproduitComponent,
+    ListproduitComponent,
+    UpdateproduitComponent
   ],
   imports: [
     BrowserModule,

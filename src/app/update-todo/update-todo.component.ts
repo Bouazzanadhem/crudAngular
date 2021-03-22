@@ -26,8 +26,6 @@ export class UpdateTodoComponent implements OnInit {
     Name: new FormControl('',[Validators.required]),
     Discription: new FormControl('',[Validators.required])
   });
-  
-  //
   this.updatelistForm.patchValue(todo)
   }
   updatelist(){
