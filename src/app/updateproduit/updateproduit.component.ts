@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-updateproduit',
@@ -14,29 +15,27 @@ export class UpdateproduitComponent implements OnInit {
     Discription: new FormControl('',[Validators.required]),
     Quantity: new FormControl('',[Validators.required])
   })
-  constructor(private route: ActivatedRoute,private router: Router) { }
+  constructor(private route: ActivatedRoute,private router: Router,private productService: ProductService) { }
   prodId: any
-  Prods:any[]=[]
+  Prod:any;
   ngOnInit(): void {
     this.prodId= this.route.snapshot.params['id']
-    this.Prods = JSON.parse(localStorage.getItem("Prods") || '[]');
-    let prod = this.Prods.find(x=>x.id == this.prodId)
+    this.Prod = this.productService.getProductById(this.prodId)
+   
     this.updateprodForm=new FormGroup({
     id: new FormControl(''),
     Name: new FormControl('',[Validators.required]),
     Discription: new FormControl('',[Validators.required]),
     Quantity: new FormControl('',[Validators.required])
   });
-  this.updateprodForm.patchValue(prod)
+  this.updateprodForm.patchValue(this.Prod)
   }
   updateproduit(){
     this.submitted = true;
     if(this.updateprodForm.invalid){
       return;
     }
-    let index=this.Prods.findIndex(x => x.id == this.prodId);
-    this.Prods.splice(index, 1, this.updateprodForm.value);
-    localStorage.setItem("Prods",JSON.stringify(this.Prods));
+    this.productService.updateProductDataById(this.updateprodForm.value,this.prodId)
     this.router.navigate(['list-produit'])
   }
 

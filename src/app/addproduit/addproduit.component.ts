@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-addproduit',
@@ -15,20 +16,16 @@ export class AddproduitComponent implements OnInit {
     Discription: new FormControl('',[Validators.required]),
     Quantity: new FormControl('',[Validators.required])
   })
-  constructor(public route: Router,private snackbar:MatSnackBar) { }
-  id:any
+  constructor(public route: Router,private snackbar:MatSnackBar, private productService:ProductService) { }
   ngOnInit(): void {
-    this.id = Math.floor(Math.random()*100);
   }
   addproduit(){
     this.submitted = true;
     if(this.addprodForm.invalid){
       return;
     }
-    let prod={id:this.id,Name:this.addprodForm.value.Name,Discription:this.addprodForm.value.Discription,Quantity:this.addprodForm.value.Quantity}
-    let Prods = JSON.parse(localStorage.getItem("Prods") || '[]');
-    Prods.push(prod);
-    localStorage.setItem("Prods",JSON.stringify(Prods));
+
+    this.productService.addProduct(this.addprodForm.value)
     this.route.navigate(['list-produit'])
     this.snackbar.open("added", "close", {
       duration: 2000,

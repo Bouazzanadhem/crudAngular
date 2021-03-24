@@ -9,13 +9,15 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { Page404Component } from './page404/page404.component';
 import { AddproduitComponent } from './addproduit/addproduit.component';
 import { ListproduitComponent } from './listproduit/listproduit.component';
 import { UpdateproduitComponent } from './updateproduit/updateproduit.component';
+import { FilterPipe } from './filter.pipe';
+import { FlousPipe } from './flous.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { UpdateproduitComponent } from './updateproduit/updateproduit.component'
     Page404Component,
     AddproduitComponent,
     ListproduitComponent,
-    UpdateproduitComponent
+    UpdateproduitComponent,
+    FilterPipe,
+    FlousPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { UpdateproduitComponent } from './updateproduit/updateproduit.component'
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

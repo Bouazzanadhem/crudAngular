@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-listproduit',
@@ -7,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListproduitComponent implements OnInit {
   Prods:any;
-  constructor() { }
+  Searchtext:any;
+  currentdate = new Date;
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.Prods = JSON.parse(localStorage.getItem("Prods") || '[]');
+    this.Prods = this.productService.getAllProducts()
   }
-  deletelist(i:Number){
-    this.Prods.splice(i,1);
-    localStorage.setItem("lists",JSON.stringify(this.Prods));
+  deletelist(i:number){
+    this.productService.deleteProductByIndex(i)
+    this.ngOnInit()
   }
-
+  
 }
