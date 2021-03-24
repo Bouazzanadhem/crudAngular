@@ -15,15 +15,13 @@ export class AddTodoComponent implements OnInit {
     Discription: new FormControl('',[Validators.required])
   })
 
+  UserData:any[]=[]
+
   constructor(public route: Router,private snackbar:MatSnackBar) { }
     id:any
   ngOnInit(): void {
     this.id = Math.floor(Math.random()*100);
-    // console.log(this.id);
-    // console.log(this.addlistForm.value.Name);
-    
-    // this.id = this.route.snapshot.params['id'];
-    //     this.isAddMode = !this.id;
+
     
   }
   addlist(){
@@ -31,16 +29,13 @@ export class AddTodoComponent implements OnInit {
     if(this.addlistForm.invalid){
       return;
     }
-    // console.log(this.addlistForm.value.Name);
-    let list={id:this.id,Name:this.addlistForm.value.Name,Discription:this.addlistForm.value.Discription}
-    let lists = JSON.parse(localStorage.getItem("lists") || '[]');
-    lists.push(list);
-    localStorage.setItem("lists",JSON.stringify(lists));
-    this.route.navigate(['list-todo'])
+    // this.route.navigate(['list-todo'])
+    this.UserData.push(this.addlistForm.value)
+    console.log(this.UserData);
+    
     this.snackbar.open("added", "close", {
       duration: 2000,
 
     });
-    
   }
 }

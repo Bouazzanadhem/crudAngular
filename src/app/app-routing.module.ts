@@ -17,9 +17,6 @@ const routes: Routes = [
     path: 'add-todo',
     component: AddTodoComponent
   },{
-    path: 'list-todo',
-    component: ListTodoComponent
-  },{
     path: 'update-todo/:id',
     component: UpdateTodoComponent
   },{
