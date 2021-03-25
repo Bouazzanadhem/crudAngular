@@ -16,7 +16,7 @@
         <td>{{x.Name}}</td>
         <td>{{x.Discription}}</td>
         <td>
-          <button type="submit" class="btn btn-success" routerLink="/update-todo/{{x.id}}">
+          <button type="submit" class="btn btn-success" (click)="updateUser(i)">
           Update
           </button>
         </td>

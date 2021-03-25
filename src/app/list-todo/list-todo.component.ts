@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-list-todo',
@@ -7,13 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListTodoComponent implements OnInit {
   @Input() lists:any;
+  @Output() updateEvent = new EventEmitter<number>()
+  @Output() deleteEvent = new EventEmitter<number>()
+
   constructor() { }
   ngOnInit(): void {
   }
-  deletelist(i:Number){
+  updateUser(i:number){
+    this.updateEvent.emit(i)
+  }
+  deletelist(i:number){
     
-    this.lists.splice(i,1);
-    localStorage.setItem("lists",JSON.stringify(this.lists));
+    this.deleteEvent.emit(i)
   }
 
 }

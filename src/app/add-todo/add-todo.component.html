@@ -1,6 +1,7 @@
 <div class="container row">
     <div class="offset-3 col-6">
-      <h1>Add List To Do</h1>
+      <h1 *ngIf="!showUpdateButton">Add List To Do</h1>
+      <h1 *ngIf="showUpdateButton">Update List</h1>
       <form [formGroup]="addlistForm" (ngSubmit)="addlist()">
         <div class="form-group">
           <label for="">Name</label>
@@ -18,8 +19,9 @@
         <mat-error *ngIf="submitted && addlistForm.controls.Discription.hasError('required')">
             Discription is required
         </mat-error>
-        <button class="form-control btn btn-primary" style="margin: 10px auto;" type="submit" >Add </button>
+        <button class="form-control btn btn-primary" style="margin: 10px auto;" type="submit" *ngIf="!showUpdateButton" >Add </button>
+        <button class="form-control btn btn-primary" style="margin: 10px auto;" type="button" *ngIf="showUpdateButton" (click)="saveUpdate()" >Save Update </button>
       </form>
     </div>
   </div>
-  <app-list-todo [lists]="UserData"></app-list-todo>
+  <app-list-todo [lists]="UserData" (updateEvent)="updateList($event)" (deleteEvent)="deleteList($event)"></app-list-todo>
