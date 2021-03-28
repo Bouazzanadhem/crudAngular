@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { AddproduitComponent } from './addproduit/addproduit.component';
-import { ListTodoComponent } from './list-todo/list-todo.component';
 import { ListproduitComponent } from './listproduit/listproduit.component';
 import { Page404Component } from './page404/page404.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
@@ -28,6 +27,10 @@ const routes: Routes = [
   },{
     path: 'update-produit/:id',
     component: UpdateproduitComponent
+  },
+  { 
+    path: 'customers',
+    loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) 
   },{
     path: '**',
     component: Page404Component

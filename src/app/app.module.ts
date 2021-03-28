@@ -9,15 +9,13 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { Page404Component } from './page404/page404.component';
 import { AddproduitComponent } from './addproduit/addproduit.component';
 import { ListproduitComponent } from './listproduit/listproduit.component';
 import { UpdateproduitComponent } from './updateproduit/updateproduit.component';
 import { FilterPipe } from './filter.pipe';
 import { FlousPipe } from './flous.pipe';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -38,10 +36,7 @@ import { FlousPipe } from './flous.pipe';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    FormsModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
