@@ -1,1 +1,47 @@
-<p>update-customer works!</p>
+<div class="container row">
+    <div class="offset-3 col-6">
+        <h1>Update User</h1>
+        <form class="example-form" [formGroup]="updateuserForm" (ngSubmit)="saveUpdate()">
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Ex. Nadhem" formControlName="fName"
+              [ngClass]="{ 'is-invalid': submitted && updateuserForm.controls.fName.errors, 'is-valid': submitted && !updateuserForm.controls.fName.errors }">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updateuserForm.controls.fName.hasError('required')">
+              First Name is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Ex. Bouazza" formControlName="lName"
+                [ngClass]="{ 'is-invalid': submitted && updateuserForm.controls.lName.errors, 'is-valid': submitted && !updateuserForm.controls.lName.errors }">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updateuserForm.controls.lName.hasError('required')">
+              Last Name is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Age</mat-label>
+                <input type="number" matInput placeholder="Ex. 26" min="1" formControlName="Age"
+                [ngClass]="{ 'is-invalid': submitted && updateuserForm.controls.Age.errors, 'is-valid': submitted && !updateuserForm.controls.Age.errors }">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updateuserForm.controls.Age.hasError('required')">
+              Age is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Ex. Tunisia" formControlName="Country"
+                [ngClass]="{ 'is-invalid': submitted && updateuserForm.controls.Country.errors, 'is-valid': submitted && !updateuserForm.controls.Country.errors }">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updateuserForm.controls.Country.hasError('required')">
+              Country is required
+            </mat-error>
+
+            <div class="example-button-row">
+            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit">Save</button>
+            <button mat-raised-button color="dark" class="float-right" style="margin: 10px auto;" type="button" [routerLink]="['/customers']">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

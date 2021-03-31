@@ -1,1 +1,43 @@
-<p>add-customer works!</p>
+  <div class="container row">
+    <div class="offset-3 col-6">
+        <h1>Add User</h1>
+        <form class="example-form" [formGroup]="adduserForm" (ngSubmit)="addUser()">
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Ex. Nadhem" formControlName="fName">
+            </mat-form-field>
+            <mat-error *ngIf="adduserForm.controls.fName.hasError('required')">
+              First Name is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Ex. Bouazza" formControlName="lName">
+            </mat-form-field>
+            <mat-error *ngIf="adduserForm.controls.lName.hasError('required')">
+              Last Name is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Age</mat-label>
+                <input type="number" matInput placeholder="Ex. 26" min="1" formControlName="Age">
+            </mat-form-field>
+            <mat-error *ngIf="adduserForm.controls.Age.hasError('required')">
+              Age is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Ex. Tunisia" formControlName="Country">
+            </mat-form-field>
+            <mat-error *ngIf="adduserForm.controls.Country.hasError('required')">
+              Country is required
+            </mat-error>
+
+            <div class="example-button-row">
+            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="adduserForm.invalid">Add</button>
+            </div>
+        </form>
+    </div>
+  </div>
+  

@@ -24,7 +24,6 @@ export class AddproduitComponent implements OnInit {
     if(this.addprodForm.invalid){
       return;
     }
-
     this.productService.addProduct(this.addprodForm.value)
     this.route.navigate(['list-produit'])
     this.snackbar.open("added", "close", {
